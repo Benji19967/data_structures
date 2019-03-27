@@ -4,13 +4,13 @@ using namespace std;
 
 class Node {
     public:
-    int data;
-    Node* next;
+        int data;
+        Node* next;
 
-    Node(int node_data) {
-        this->data = node_data;
-        this->next = nullptr;
-    }
+        Node(int node_data) {
+            this->data = node_data;
+            this->next = nullptr;
+        }
 };
 
 class SinglyLinkedList {
