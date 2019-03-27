@@ -4,8 +4,8 @@ using namespace std;
 
 class Node {
 	public:
-		int data;
-		Node* next;
+        int data;
+        Node* next;
 
         Node(int node_data) {
             this->data = node_data;
@@ -14,7 +14,7 @@ class Node {
 };
 
 class SinglyLinkedList {
-	public:
+    public:
         Node* head;
         Node* tail;
 
