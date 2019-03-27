@@ -7,8 +7,8 @@ class Node {
 		int data;
 		Node* next;
 
-        Node(int data) {
-            this->data = data;
+        Node(int node_data) {
+            this->data = node_data;
             this->next = nullptr;
         }
 };
