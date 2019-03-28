@@ -4,24 +4,24 @@ using namespace std;
 
 class Node {
     public:
-		int data;
-		Node* next;
+        int data;
+        Node* next;
 
-		Node(int data) {
-			this->data = data;
-			this->next = nullptr;
-		}
+        Node(int data) {
+            this->data = data;
+            this->next = nullptr;
+        }
 };
 
 class SinglyLinkedList {
-	public:
-	    Node* head;
-		Node* tail;
+    public:
+        Node* head;
+        Node* tail;
 
-		SinglyLinkedList() {
-			this->head = nullptr;
-			this->tail = nullptr;
-		}
+        SinglyLinkedList() {
+            this->head = nullptr;
+            this->tail = nullptr;
+        }
 };
 
 int main() {
@@ -37,4 +37,5 @@ int main() {
     l->head = n1;
 
     cout << l->head->next->next->data; // prints 3
+
 }
