@@ -34,6 +34,7 @@ int main() {
     n1->next = n2;
     n2->next = n3;
 
-    cout << n1->next->next->data; // prints 3
+    l->head = n1;
 
+    cout << l->head->next->next->data; // prints 3
 }
