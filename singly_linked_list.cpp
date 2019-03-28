@@ -3,18 +3,18 @@
 using namespace std;
 
 class Node {
-    public:
-        int data;
-        Node* next;
+	public:
+		int data;
+		Node* next;
 
-        Node(int node_data) {
-            this->data = node_data;
+        Node(int data) {
+            this->data = data;
             this->next = nullptr;
         }
 };
 
 class SinglyLinkedList {
-    public:
+	public:
         Node* head;
         Node* tail;
 
@@ -25,5 +25,15 @@ class SinglyLinkedList {
 };
 
 int main() {
-    
+    SinglyLinkedList* l = new SinglyLinkedList();
+
+    Node* n1 = new Node(1);
+    Node* n2 = new Node(2);
+    Node* n3 = new Node(3);
+
+    n1->next = n2;
+    n2->next = n3;
+
+    cout << n1->next->next->data; // prints 3
+
 }
