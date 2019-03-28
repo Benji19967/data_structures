@@ -15,7 +15,7 @@ class Node {
 
 class SinglyLinkedList {
 	public:
-		Node* head;
+	    Node* head;
 		Node* tail;
 
 		SinglyLinkedList() {
