@@ -37,5 +37,8 @@ int main() {
     l->head = n1;
 
     cout << l->head->next->next->data; // prints 3
-
+    
+    delete n1;
+    delete n2;
+    delete n3;
 }
