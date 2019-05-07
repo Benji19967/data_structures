@@ -41,4 +41,5 @@ int main() {
     delete n1;
     delete n2;
     delete n3;
+    delete l;
 }
