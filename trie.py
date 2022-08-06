@@ -1,4 +1,9 @@
+import sys
 from typing import Dict, Set
+import random
+import itertools
+
+from _pytest.compat import num_mock_patch_args
 
 
 class TrieNode:
@@ -64,4 +69,19 @@ if __name__ == "__main__":
     assert t.find_prefix("hell") == True
     assert t.find_prefix("ello") == False
 
-    print("Success")
+    print("Passed tests")
+
+    # performance
+    num_words = int(sys.argv[1])
+    # max sys.argv len -> 36062
+    words = sys.argv[1:30000]
+    print(len(words))
+
+    for word in words[:1000]:
+        t.add_word(word)
+
+    for word in itertools.cycle(words):
+        t.find_prefix(word)
+        num_words -= 1
+        if num_words == 0:
+            break
