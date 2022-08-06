@@ -79,9 +79,10 @@ if __name__ == "__main__":
 
     for word in words[:1000]:
         t.add_word(word)
-
+    found = 0
     for word in itertools.cycle(words):
-        t.find_prefix(word)
+        found += t.find_prefix(word[:17])
         num_words -= 1
         if num_words == 0:
             break
+    print(f"Found: {found}")
