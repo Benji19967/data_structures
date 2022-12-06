@@ -1,9 +1,7 @@
 import sys
 from typing import Dict, Set
-import random
 import itertools
-
-from _pytest.compat import num_mock_patch_args
+import typer
 
 
 class TrieNode:
@@ -13,11 +11,10 @@ class TrieNode:
 
 
 class Trie:
-
     def __init__(self) -> None:
+
         self._root = TrieNode()
         self._words: Set[str] = set()
-
 
     def add_word(self, word: str) -> None:
         """
@@ -30,7 +27,6 @@ class Trie:
                 node.neighbors[c] = TrieNode()
             node = node.neighbors[c]
         node.is_word = True
-
 
     def find_word(self, word: str) -> bool:
         """
@@ -56,7 +52,7 @@ class Trie:
         return True
 
 
-if __name__ == "__main__":        
+if __name__ == "__main__":
 
     t = Trie()
 
