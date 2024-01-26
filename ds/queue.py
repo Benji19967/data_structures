@@ -12,7 +12,7 @@ class Queue(Generic[T]):
 
     def dequeue(self) -> T:
         """
-        This is inefficient as the entire queue needs to be copied 
+        This is inefficient as the entire queue needs to be copied
         on every dequeue: O(N)
         """
         element = self._queue[0]
@@ -31,6 +31,7 @@ class Queue(Generic[T]):
     def __len__(self) -> int:
         return len(self._queue)
 
+
 if __name__ == "__main__":
     queue = Queue[int]()
     queue.enqueue(5)
@@ -41,4 +42,3 @@ if __name__ == "__main__":
     print(f"Length of Queue: {len(queue)}")
     print(queue.dequeue())
     print(queue)
-

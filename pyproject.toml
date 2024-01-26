@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "data-structures"
+version = "0.1.0"
+description = "Common Data Structures implementations"
+authors = [ "Benjamin Labrecque" ]
+packages = [
+    { include = "ds" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.1"
+
+[tool.mypy]
+files = "ds"
+strict = true
+namespace_packages = true
+explicit_package_bases = true
+
