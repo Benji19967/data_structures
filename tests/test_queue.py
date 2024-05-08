@@ -1,4 +1,4 @@
-from ds.queue import Queue
+from ds_python.queue import Queue
 
 
 def test_enqueue():
