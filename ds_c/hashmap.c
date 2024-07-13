@@ -11,11 +11,11 @@
 //
 // 1. For integers: value modulo <number of buckets>
 
+// Compiling/linking with the singly_linked_list implementation
+// cc -Wall hashmap.c singly_linked_list.c -o a.out
+
 #define NUM_BUCKETS 1000
 #define NUM_VALUES 100000
-
-// void push(Node* head, int val);
-// void print_linked_list(Node* curr);
 
 int hash(long value) {
   return value % NUM_BUCKETS;
