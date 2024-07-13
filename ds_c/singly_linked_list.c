@@ -1,12 +1,9 @@
+#include "singly_linked_list.h"
+
 #include <stdio.h>
 #include <stdlib.h>  // `malloc` and `free`
 
 // `foo->x` is syntactic sugar for (*foo).x
-
-typedef struct Node {
-  int value;
-  struct Node *next;
-} Node;
 
 void print_linked_list(Node *curr) {
   while (curr->next != NULL) {
