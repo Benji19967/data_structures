@@ -36,23 +36,23 @@ int peek(Node *head) {
   return curr->value;
 }
 
-int main() {
-  Node *head = NULL;
-  Node *prev = (Node *)malloc(sizeof(Node));
-  prev->value = -1;
-  prev->next = NULL;
-  head = prev;
-
-  for (int i = 0; i < 10; i++) {
-    Node *curr = (Node *)malloc(sizeof(Node));
-    curr->value = i;
-    curr->next = NULL;
-    prev->next = curr;
-    prev = curr;
-  }
-
-  push(head, 10);
-
-  print_linked_list(head);
-  printf("Peek: %d\n", peek(head));
-}
+// int main() {
+//   Node *head = NULL;
+//   Node *prev = (Node *)malloc(sizeof(Node));
+//   prev->value = -1;
+//   prev->next = NULL;
+//   head = prev;
+//
+//   for (int i = 0; i < 10; i++) {
+//     Node *curr = (Node *)malloc(sizeof(Node));
+//     curr->value = i;
+//     curr->next = NULL;
+//     prev->next = curr;
+//     prev = curr;
+//   }
+//
+//   push(head, 10);
+//
+//   print_linked_list(head);
+//   printf("Peek: %d\n", peek(head));
+// }
