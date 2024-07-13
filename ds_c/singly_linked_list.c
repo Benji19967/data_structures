@@ -28,6 +28,17 @@ void push(Node *head, int val) {
   curr->next = new_node;
 }
 
+/*
+Peek at the last element of the linked list
+*/
+int peek(Node *head) {
+  Node *curr = head;
+  while (curr->next != NULL) {
+    curr = curr->next;
+  }
+  return curr->value;
+}
+
 int main() {
   Node *head = NULL;
   Node *prev = (Node *)malloc(sizeof(Node));
@@ -46,4 +57,5 @@ int main() {
   push(head, 10);
 
   print_linked_list(head);
+  printf("Peek: %d\n", peek(head));
 }
