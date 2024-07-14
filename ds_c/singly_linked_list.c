@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>  // `malloc` and `free`
+#include <string.h>
 
 // `foo->x` is syntactic sugar for (*foo).x
 
@@ -11,6 +12,16 @@ void print_linked_list(Node *curr) {
     curr = curr->next;
   }
   printf("Value: %d\n", curr->value);
+}
+
+void print_linked_list_one_line(Node *curr) {
+  char s[1000] = {curr->value};
+  while (curr->next != NULL) {
+    char buffer[10];
+    sprintf(buffer, "-> %d", curr->value);
+    strncat(s, buffer, 10);
+  }
+  printf("%s", s);
 }
 
 void push(Node *head, int val) {

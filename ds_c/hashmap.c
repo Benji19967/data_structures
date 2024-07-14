@@ -15,7 +15,7 @@
 // cc -Wall hashmap.c singly_linked_list.c -o a.out
 
 #define NUM_BUCKETS 1000
-#define NUM_VALUES 100000
+#define NUM_VALUES 1000
 
 int hash(long value) {
   return value % NUM_BUCKETS;
@@ -34,5 +34,6 @@ int main() {
     push(buckets[hashed_value], random_value);
   }
 
-  print_linked_list(buckets[1]);
+  // print_linked_list(buckets[0]);
+  print_linked_list_one_line(buckets[0]);
 }

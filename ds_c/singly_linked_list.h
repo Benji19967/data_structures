@@ -4,4 +4,5 @@ typedef struct Node {
 } Node;
 
 void print_linked_list(Node *curr);
+void print_linked_list_one_line(Node *curr);
 void push(Node *head, int val);
