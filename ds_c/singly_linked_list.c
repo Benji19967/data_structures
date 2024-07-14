@@ -1,10 +1,22 @@
 #include "singly_linked_list.h"
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>  // `malloc` and `free`
 #include <string.h>
 
 // `foo->x` is syntactic sugar for (*foo).x
+
+int num_digits(unsigned int num) {
+  int num_digits = 1;
+
+  while (num > 9) {
+    num_digits++;
+    num /= 10;
+  }
+
+  return num_digits;
+}
 
 void print_linked_list(Node *curr) {
   while (curr->next != NULL) {
@@ -14,20 +26,28 @@ void print_linked_list(Node *curr) {
   printf("Value: %d\n", curr->value);
 }
 
+void append_node_to_string(char *s, Node *curr, bool last) {
+  size_t nbytes = num_digits(curr->value) + 4;
+  char *buffer = malloc(nbytes);
+  if (last) {
+    sprintf(buffer, "%d", curr->value);
+  } else {
+    sprintf(buffer, "%d -> ", curr->value);
+  }
+  strncat(s, buffer, nbytes);
+  free(buffer);
+}
+
 void print_linked_list_one_line(Node *curr) {
   char *s = malloc(1000);
-  char *buffer = malloc(20);
 
   while (curr->next != NULL) {
-    sprintf(buffer, "%d -> ", curr->value);
-    strncat(s, buffer, 20);
+    append_node_to_string(s, curr, false);
     curr = curr->next;
   }
-  sprintf(buffer, "%d", curr->value);
-  strncat(s, buffer, 20);
+  append_node_to_string(s, curr, true);
   puts(s);
 
-  free(buffer);
   free(s);
 }
 
