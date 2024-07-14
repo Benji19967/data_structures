@@ -15,13 +15,20 @@ void print_linked_list(Node *curr) {
 }
 
 void print_linked_list_one_line(Node *curr) {
-  char s[1000] = {curr->value};
+  char *s = malloc(1000);
+  char *buffer = malloc(20);
+
   while (curr->next != NULL) {
-    char buffer[10];
-    sprintf(buffer, "-> %d", curr->value);
-    strncat(s, buffer, 10);
+    sprintf(buffer, "%d -> ", curr->value);
+    strncat(s, buffer, 20);
+    curr = curr->next;
   }
-  printf("%s", s);
+  sprintf(buffer, "%d", curr->value);
+  strncat(s, buffer, 20);
+  puts(s);
+
+  free(buffer);
+  free(s);
 }
 
 void push(Node *head, int val) {
