@@ -39,6 +39,8 @@ void append_node_to_string(char *s, Node *curr, bool last) {
 }
 
 void print_linked_list_one_line(Node *curr) {
+  // TODO: Maybe start with little memory and increase it exponentially when
+  // more is needed
   char *s = malloc(1000);
 
   while (curr->next != NULL) {
