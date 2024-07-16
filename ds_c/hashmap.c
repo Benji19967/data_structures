@@ -21,6 +21,25 @@ int hash(long value) {
   return value % NUM_BUCKETS;
 }
 
+typedef struct Pair {
+  int value_1;
+  int value_2;
+} Pair;
+
+Pair two_sum(int nums[], int num_elements, int target) {
+  Pair result;
+  Hashmap *seen;
+  for (int i = 0; i < num_elements; i++) {
+    int complement = target - nums[i];
+    int element = Hashmap_contains(seen, complement);
+    if (value) {
+      return Pair_new(i, element.index);
+    }
+    Hashmap_insert(seen, nums[i]);
+  }
+  return Pair_new(NULL, NULL);
+}
+
 int main() {
   Node *buckets[NUM_BUCKETS] = {NULL};
 
