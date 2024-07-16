@@ -26,19 +26,19 @@ typedef struct Pair {
   int value_2;
 } Pair;
 
-Pair two_sum(int nums[], int num_elements, int target) {
-  Pair result;
-  Hashmap *seen;
-  for (int i = 0; i < num_elements; i++) {
-    int complement = target - nums[i];
-    int element = Hashmap_contains(seen, complement);
-    if (value) {
-      return Pair_new(i, element.index);
-    }
-    Hashmap_insert(seen, nums[i]);
-  }
-  return Pair_new(NULL, NULL);
-}
+// Pair two_sum(int nums[], int num_elements, int target) {
+//   Pair result;
+//   Hashmap *seen;
+//   for (int i = 0; i < num_elements; i++) {
+//     int complement = target - nums[i];
+//     int element = Hashmap_contains(seen, complement);
+//     if (value) {
+//       return Pair_new(i, element.index);
+//     }
+//     Hashmap_insert(seen, nums[i]);
+//   }
+//   return Pair_new(NULL, NULL);
+// }
 
 int main() {
   Node *buckets[NUM_BUCKETS] = {NULL};
@@ -50,9 +50,9 @@ int main() {
       Node *head = (Node *)malloc(sizeof(Node));
       buckets[hashed_value] = head;
     }
-    push(buckets[hashed_value], random_value);
+    sll_push(buckets[hashed_value], random_value);
   }
 
-  // print_linked_list(buckets[0]);
-  print_linked_list_one_line(buckets[0]);
+  // sll_print(buckets[0]);
+  sll_print_one_line(buckets[0]);
 }

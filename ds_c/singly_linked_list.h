@@ -3,6 +3,7 @@ typedef struct Node {
   struct Node *next;
 } Node;
 
-void print_linked_list(Node *curr);
-void print_linked_list_one_line(Node *curr);
-void push(Node *head, int val);
+void sll_print(Node *curr);
+void sll_print_one_line(Node *curr);
+void sll_push(Node *head, int val);
+int sll_peek(Node *head);

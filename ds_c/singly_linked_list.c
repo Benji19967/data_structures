@@ -18,7 +18,7 @@ int num_digits(unsigned int num) {
   return num_digits;
 }
 
-void print_linked_list(Node *curr) {
+void sll_print(Node *curr) {
   while (curr->next != NULL) {
     printf("Value: %d, Next value: %d\n", curr->value, curr->next->value);
     curr = curr->next;
@@ -38,7 +38,7 @@ void append_node_to_string(char *s, Node *curr, bool last) {
   free(buffer);
 }
 
-void print_linked_list_one_line(Node *curr) {
+void sll_print_one_line(Node *curr) {
   // TODO: Maybe start with little memory and increase it exponentially when
   // more is needed
   char *s = malloc(1000);
@@ -53,7 +53,7 @@ void print_linked_list_one_line(Node *curr) {
   free(s);
 }
 
-void push(Node *head, int val) {
+void sll_push(Node *head, int val) {
   Node *new_node = (Node *)malloc(sizeof(Node));
   new_node->value = val;
   new_node->next = NULL;
@@ -68,7 +68,7 @@ void push(Node *head, int val) {
 /*
 Peek at the last element of the linked list
 */
-int peek(Node *head) {
+int sll_peek(Node *head) {
   Node *curr = head;
   while (curr->next != NULL) {
     curr = curr->next;
