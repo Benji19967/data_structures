@@ -65,6 +65,20 @@ void sll_push(Node *head, int val) {
   curr->next = new_node;
 }
 
+bool sll_contains(Node *head, int val) {
+  if (head->value == val) {
+    return true;
+  }
+  Node *curr = head;
+  while (curr->next != NULL) {
+    curr = curr->next;
+    if (curr->value == val) {
+      return true;
+    }
+  }
+  return false;
+}
+
 /*
 Peek at the last element of the linked list
 */
