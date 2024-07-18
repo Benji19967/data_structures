@@ -41,7 +41,9 @@ typedef struct Hashmap {
 } Hashmap;
 
 void Hashmap_init(Hashmap *map) {
+  printf("%d\n", -99);
   for (int i = 0; i < NUM_BUCKETS; i++) {
+    printf("%d", -98);
     map->buckets[i] = NULL;
   }
 }

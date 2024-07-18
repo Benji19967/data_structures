@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+ * Notes on flushing (when printing to stdout):
+ * https://stackoverflow.com/questions/1716296/why-does-printf-not-flush-after-the-call-unless-a-newline-is-in-the-format-strin
+ *
+ * 1. The `stdout` stream is line buffered by default
+ *
+ */
+
 int main() {
   /*
    * Section 1
