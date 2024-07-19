@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>  // `malloc` and `free`
 #include <string.h>
+#include <time.h>
 
 // `foo->x` is syntactic sugar for (*foo).x
 
@@ -68,6 +69,9 @@ void sll_push(Node *head, int key, int val) {
 }
 
 Node *sll_contains_key(Node *head, int key) {
+  if (head == NULL) {
+    return NULL;
+  }
   if (head->key == key) {
     return head;
   }

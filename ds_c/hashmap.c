@@ -43,7 +43,7 @@ typedef struct Hashmap {
 void Hashmap_init(Hashmap *map) {
   printf("%d\n", -99);
   for (int i = 0; i < NUM_BUCKETS; i++) {
-    printf("%d", -98);
+    printf("%d\n", i);
     map->buckets[i] = NULL;
   }
 }
@@ -58,9 +58,14 @@ void Hashmap_insert(Hashmap *map, int key, int value) {
 }
 
 Node *Hashmap_get(Hashmap *map, int key) {
+  printf("%d\n", -1);
   int hashed_key = hash(key);
+  printf("%d\n", -2);
+  printf("hashed_key: %d\n", hashed_key);
   Node *key_node = sll_contains_key(map->buckets[hashed_key], key);
+  printf("%d\n", -3);
   if (key_node != NULL) {
+    printf("%d\n", -4);
     return key_node;
   }
   return NULL;
@@ -70,24 +75,25 @@ Node *Hashmap_get(Hashmap *map, int key) {
  * Return indexes of 2 elements that sum up to target, if found.
  */
 Pair two_sum(int nums[], int num_elements, int target) {
-  printf("%d", 0);
-  // Hashmap *seen = malloc(NUM_BUCKETS * sizeof(Node *));
-  Hashmap *seen;
+  printf("%d\n", 0);
+  // TODO: Is this correct (the right amount to allocate)?
+  Hashmap *seen = malloc(NUM_BUCKETS * sizeof(Node *));
+  // Hashmap *seen; // Explain why this leads to a segfault.
   Hashmap_init(seen);
 
-  printf("%d", 1);
+  printf("%d\n", 1);
   for (int i = 0; i < num_elements; i++) {
     int complement = target - nums[i];
-    printf("%d", 2);
+    printf("%d\n", 2);
     Node *element = Hashmap_get(seen, complement);
-    printf("%d", 3);
+    printf("%d\n", 3);
     if (element != NULL) {
-      printf("%d", 4);
+      printf("%d\n", 4);
       return Pair_new(i, element->value);
-      printf("%d", 5);
+      printf("%d\n", 5);
     }
     Hashmap_insert(seen, nums[i], i);
-    printf("%d", 6);
+    printf("%d\n", 6);
   }
   free(seen);
   return Pair_new(-1, -1);
