@@ -87,10 +87,15 @@ Pair two_sum(int nums[], int num_elements, int target) {
 
 int main() {
   // TWO SUM
-  printf("%d\n", sizeof(Node *));
-  int nums[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+  int nums[] = {1, 2, 3, 4, 5, 6, 7, 8, 10};
+  int num_elements = sizeof(nums) / sizeof(nums[0]);
   int target = 17;
-  Pair result = two_sum(nums, sizeof(nums), target);
+
+  Pair result = two_sum(nums, num_elements, target);
+  if (result.value_1 == -1) {
+    printf("No solution found\n");
+    return 0;
+  }
   int idx_1 = result.value_1;
   int idx_2 = result.value_2;
   printf("Indexes: (%d, %d)\n", idx_1, idx_2);
