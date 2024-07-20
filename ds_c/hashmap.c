@@ -85,12 +85,17 @@ Pair two_sum(int nums[], int num_elements, int target) {
   return Pair_new(-1, -1);
 }
 
-int main() {
+int main(int argc, char *argv[]) {
   // TWO SUM
-  int nums[] = {1, 2, 3, 4, 5, 6, 7, 8, 10};
-  int num_elements = sizeof(nums) / sizeof(nums[0]);
-  int target = 17;
+  int nums[argc];
+  int target = atoi(argv[1]);
 
+  // argv[0] is the program name
+  for (int i = 2; i < argc; i++) {
+    nums[i - 2] = atoi(argv[i]);
+  }
+
+  int num_elements = sizeof(nums) / sizeof(nums[0]);
   Pair result = two_sum(nums, num_elements, target);
   if (result.value_1 == -1) {
     printf("No solution found\n");
@@ -100,14 +105,6 @@ int main() {
   int idx_2 = result.value_2;
   printf("Indexes: (%d, %d)\n", idx_1, idx_2);
   printf("Target: %d, Values: (%d, %d)\n", target, nums[idx_1], nums[idx_2]);
-
-  // Hashmap *map;
-  // Hashmap_init(map);
-  //
-  // for (int i = 0; i < NUM_VALUES; i++) {
-  //   int random_value = rand();
-  //   int hashed_value = hash(random_value);
-  // }
 
   // sll_print(buckets[0]);
   // sll_print_one_line(buckets[0]);
