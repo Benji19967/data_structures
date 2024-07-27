@@ -18,8 +18,6 @@
 // Compiling/linking with the singly_linked_list implementation
 // cc -Wall hashmap.c singly_linked_list.c -o a.out
 
-#define NUM_VALUES 1000
-
 int hash(long value) {
   return value % NUM_BUCKETS;
 }

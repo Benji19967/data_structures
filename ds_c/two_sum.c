@@ -1,7 +1,7 @@
 // TODO: Move this to a different location / repo (maybe `algorithms`)
 
 #include <stdio.h>
-#include <stdlib.h>  // malloc and free
+#include <stdlib.h>  // malloc and free, atoi
 
 #include "hashmap.h"
 
