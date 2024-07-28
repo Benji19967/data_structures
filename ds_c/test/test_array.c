@@ -15,7 +15,7 @@ void test_add() {
 
 void test_subtract() {
   int output = 10 - 20;
-  TEST_ASSERT_EQUAL(-9, output);
+  TEST_ASSERT_EQUAL(-8, output);
 }
 
 int main(void) {
