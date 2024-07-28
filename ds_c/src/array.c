@@ -8,9 +8,9 @@ void print_array(int arr[], int arr_length) {
   }
 }
 
-int main() {
-  int arr[N] = {0};
-  int arr_length = sizeof(arr) / sizeof(arr[0]);
-
-  print_array(arr, arr_length);
-}
+// int main() {
+//   int arr[N] = {0};
+//   int arr_length = sizeof(arr) / sizeof(arr[0]);
+//
+//   print_array(arr, arr_length);
+// }

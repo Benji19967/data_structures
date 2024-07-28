@@ -56,6 +56,7 @@ int main(int argc, char *argv[]) {
   }
   int idx_1 = result.value_1;
   int idx_2 = result.value_2;
+  printf("Target: %d\n", target);
+  printf("Values: (%d, %d)\n", nums[idx_1], nums[idx_2]);
   printf("Indexes: (%d, %d)\n", idx_1, idx_2);
-  printf("Target: %d, Values: (%d, %d)\n", target, nums[idx_1], nums[idx_2]);
 }
