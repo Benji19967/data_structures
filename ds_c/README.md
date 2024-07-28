@@ -6,7 +6,15 @@ If you need help or inspiration for cleaner code:
 
 https://github.com/fragglet/c-algorithms/tree/master
 
-## Adding Unity
+## Unity
+
+Testing framework
+
+### Docs
+
+[Unity docs](https://github.com/ThrowTheSwitch/Unity/tree/master/docs)
+
+### Adding Unity
 
 ```
 git submodule add git@github.com:ThrowTheSwitch/Unity.git unity
