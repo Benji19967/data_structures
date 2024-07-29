@@ -32,6 +32,13 @@ void test_array_designated_inits() {
   TEST_ASSERT_EQUAL_INT_ARRAY(expected, arr, 6);
 }
 
+void test_array_designated_inits_range() {
+  // GNU only
+  int arr[] = {[1 ... 4] = 37, [7 ... 11] = 43};
+  int expected[] = {0, 37, 37, 37, 37, 0, 0, 43, 43, 43, 43, 43};
+  TEST_ASSERT_EQUAL_INT_ARRAY(expected, arr, 12);
+}
+
 void test_create_array_of_pointers_null() {
   int *arr[3] = {NULL};
   int *arr2[3] = {NULL, NULL, NULL};
@@ -46,6 +53,7 @@ int main(void) {
   RUN_TEST(test_declare_array_of_integers_init_one_value);
   RUN_TEST(test_create_array_of_integers);
   RUN_TEST(test_array_designated_inits);
+  RUN_TEST(test_array_designated_inits_range);
   RUN_TEST(test_create_array_of_pointers_null);
 
   UNITY_END();
