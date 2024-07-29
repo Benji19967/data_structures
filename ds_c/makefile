@@ -54,5 +54,5 @@ clean:
 
 # TODO: clean this up
 
-test/test_array.out: test/test_array.c
-	gcc test/test_array.c unity/src/unity.c -o test/test_array.out
+test:
+	gcc tests/test_array.c unity/src/unity.c -o tests/test_array.out && tests/test_array.out
