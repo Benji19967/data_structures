@@ -96,6 +96,19 @@ Node *sll_peek(Node *head) {
   return curr;
 }
 
+/*
+ * Create new node
+ */
+Node *sll_new_node() {
+  Node *node;
+
+  node->key = 0;
+  node->value = 0;
+  node->next = NULL;
+
+  return node;
+}
+
 // int main() {
 //   Node *head = NULL;
 //   Node *prev = (Node *)malloc(sizeof(Node));

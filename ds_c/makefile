@@ -60,3 +60,6 @@ test_array:
 test_struct:
 	gcc tests/test_struct.c unity/src/unity.c -o tests/test_struct.out && tests/test_struct.out
 
+test_sll:
+	gcc tests/test_singly_linked_list.c src/singly_linked_list.c unity/src/unity.c -o tests/test_singly_linked_list.out && tests/test_singly_linked_list.out
+
