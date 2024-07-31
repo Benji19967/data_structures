@@ -100,13 +100,24 @@ Node *sll_peek(Node *head) {
  * Create new node
  */
 Node *sll_new_node() {
-  Node *node;
+  Node *node = malloc(sizeof(Node));
 
   node->key = 0;
   node->value = 0;
   node->next = NULL;
 
   return node;
+}
+
+/*
+ * Push node at the end of the linked list
+ */
+void sll_push_node(Node *head, Node *node) {
+  Node *curr = head;
+  while (curr->next != NULL) {
+    curr = curr->next;
+  }
+  curr->next = node;
 }
 
 // int main() {
