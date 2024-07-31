@@ -110,6 +110,19 @@ Node *sll_new_node() {
 }
 
 /*
+ * Create new node on the stack
+ */
+Node sll_new_node_stack() {
+  Node node;
+
+  node.key = 0;
+  node.value = 0;
+  node.next = NULL;
+
+  return node;
+}
+
+/*
  * Push node at the end of the linked list
  */
 void sll_push_node(Node *head, Node *node) {
@@ -118,6 +131,17 @@ void sll_push_node(Node *head, Node *node) {
     curr = curr->next;
   }
   curr->next = node;
+}
+
+/*
+ * Push node at the end of the linked list, which lives on the stack
+ */
+void sll_push_node_stack(Node head, Node node) {
+  Node curr = head;
+  while (curr.next != NULL) {
+    curr = *curr.next;
+  }
+  curr.next = &node;
 }
 
 // int main() {

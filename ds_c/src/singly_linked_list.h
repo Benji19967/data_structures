@@ -10,6 +10,7 @@ typedef struct Node {
 } Node;
 
 Node *sll_new_node();
+Node sll_new_node_stack();
 void sll_push_node(Node *head, Node *node);
 Node *sll_peek(Node *head);
 Node *sll_contains_key(Node *head, int key);
