@@ -36,6 +36,18 @@ int hashmap_hash(int key, int num_buckets) {
   return key % num_buckets;
 }
 
+Node *hashmap_insert(Hashmap *map, int key, int value) {
+  int hashed_key = hashmap_hash(key, map->num_buckets);
+  Node *node = sll_new_node_kv(key, value);
+  if (map->buckets[hashed_key] == NULL) {
+    map->buckets[hashed_key] = node;
+  } else {
+    sll_push_node(map->buckets[hashed_key], node);
+  }
+  map->num_elements++;
+  return node;
+}
+
 // void Hashmap_init(Hashmap *map) {
 //   for (int i = 0; i < NUM_BUCKETS; i++) {
 //     map->buckets[i] = NULL;

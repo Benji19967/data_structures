@@ -17,6 +17,14 @@ void test_new_node() {
   TEST_ASSERT_EQUAL_PTR(NULL, node->next);
 }
 
+void test_new_node_kv() {
+  Node *node = sll_new_node_kv(7, 11);
+
+  TEST_ASSERT_EQUAL_INT(7, node->key);
+  TEST_ASSERT_EQUAL_INT(11, node->value);
+  TEST_ASSERT_EQUAL_PTR(NULL, node->next);
+}
+
 void test_new_node_stack() {
   Node node = sll_new_node_stack();
 
@@ -182,6 +190,7 @@ int main(void) {
   UNITY_BEGIN();
 
   RUN_TEST(test_new_node);
+  RUN_TEST(test_new_node_kv);
   RUN_TEST(test_new_node_stack);
   RUN_TEST(test_push_node);
   RUN_TEST(test_push_node_stack);

@@ -110,6 +110,19 @@ Node *sll_new_node() {
 }
 
 /*
+ * Create new node with initial kv values
+ */
+Node *sll_new_node_kv(int key, int value) {
+  Node *node = malloc(sizeof(Node));
+
+  node->key = key;
+  node->value = value;
+  node->next = NULL;
+
+  return node;
+}
+
+/*
  * Create new node on the stack
  */
 Node sll_new_node_stack() {

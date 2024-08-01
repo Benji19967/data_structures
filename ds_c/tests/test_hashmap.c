@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "../src/hashmap.h"
 #include "../unity/src/unity.h"
 
@@ -30,24 +32,27 @@ void test_hash_function() {
   TEST_ASSERT_EQUAL_INT(0, hashed_key2);
 }
 
-// void test_hashmap_insert() {
-//   int num_buckets = 10;
-//   Hashmap* map = hashmap_new(num_buckets);
-//
-//   int key = 1;
-//   int value = 11;
-//   hashmap_insert(map, kev, value);
-//
-//   TEST_ASSERT_EQUAL_INT(1, map->num_elements);
-//   TEST_ASSERT_EQUAL_INT(num_buckets, map->num_buckets);
-// }
+void test_hashmap_insert() {
+  int num_buckets = 10;
+  Hashmap* map = hashmap_new(num_buckets);
+
+  int key = 17;
+  int value = 18;
+  hashmap_insert(map, key, value);
+
+  TEST_ASSERT_EQUAL_INT(1, map->num_elements);
+  TEST_ASSERT_EQUAL_INT(num_buckets, map->num_buckets);
+  TEST_ASSERT_EQUAL_INT(17, map->buckets[7]->key);
+  TEST_ASSERT_EQUAL_INT(18, map->buckets[7]->value);
+  TEST_ASSERT_EQUAL_PTR(NULL, map->buckets[7]->next);
+}
 
 int main(void) {
   UNITY_BEGIN();
 
   RUN_TEST(test_new_hashmap);
   RUN_TEST(test_hash_function);
-  // RUN_TEST(test_hashmap_insert);
+  RUN_TEST(test_hashmap_insert);
 
   UNITY_END();
 

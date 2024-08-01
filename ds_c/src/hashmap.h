@@ -10,6 +10,7 @@ typedef struct Hashmap {
 
 Hashmap *hashmap_new(int num_buckets);
 int hashmap_hash(int key, int num_buckets);
+Node *hashmap_insert(Hashmap *map, int key, int value);
 
 // void Hashmap_init(Hashmap *map);
 // void Hashmap_insert(Hashmap *map, int key, int value);
