@@ -186,6 +186,40 @@ void test_find_by_key() {
   TEST_ASSERT_EQUAL_PTR(NULL, node3);
 }
 
+void test_peek() {
+  Node *head = sll_new_node();
+  Node *new_node_1 = sll_new_node();
+  Node *new_node_2 = sll_new_node();
+  new_node_1->value = 1;
+  new_node_1->key = 1;
+  new_node_2->value = 2;
+  new_node_2->key = 2;
+
+  sll_push_node(head, new_node_1);
+  sll_push_node(head, new_node_2);
+  Node *peeked = sll_peek(head);
+
+  TEST_ASSERT_EQUAL_INT(2, peeked->key);
+  TEST_ASSERT_EQUAL_INT(2, peeked->value);
+  TEST_ASSERT_EQUAL_PTR(new_node_2, peeked);
+}
+
+void test_delete() {
+  Node *head = sll_new_node();
+  Node *new_node_1 = sll_new_node();
+  Node *new_node_2 = sll_new_node();
+  new_node_1->value = 1;
+  new_node_1->key = 1;
+  new_node_2->value = 2;
+  new_node_2->key = 2;
+
+  sll_push_node(head, new_node_1);
+  sll_push_node(head, new_node_2);
+  sll_delete(&head);
+
+  TEST_ASSERT_EQUAL_PTR(NULL, head);
+}
+
 int main(void) {
   UNITY_BEGIN();
 
@@ -200,6 +234,8 @@ int main(void) {
   RUN_TEST(test_delete_last_node);
   RUN_TEST(test_delete_middle_node);
   RUN_TEST(test_find_by_key);
+  RUN_TEST(test_peek);
+  RUN_TEST(test_delete);
 
   UNITY_END();
 

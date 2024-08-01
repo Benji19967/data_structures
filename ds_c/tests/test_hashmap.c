@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../src/hashmap.h"
 #include "../unity/src/unity.h"
@@ -62,10 +63,10 @@ void test_hashmap_find() {
   hashmap_insert(map, 17, 18);
   hashmap_insert(map, 27, 28);
 
-  HashmapKV* kv1 = hashmap_find(map, 5);
-  HashmapKV* kv2 = hashmap_find(map, 17);
-  HashmapKV* kv3 = hashmap_find(map, 27);
-  HashmapKV* kvNotFound = hashmap_find(map, 99);
+  HashmapKV* kv1 = hashmap_get(map, 5);
+  HashmapKV* kv2 = hashmap_get(map, 17);
+  HashmapKV* kv3 = hashmap_get(map, 27);
+  HashmapKV* kvNotFound = hashmap_get(map, 99);
 
   TEST_ASSERT_EQUAL_INT(5, kv1->key);
   TEST_ASSERT_EQUAL_INT(6, kv1->value);
@@ -74,6 +75,10 @@ void test_hashmap_find() {
   TEST_ASSERT_EQUAL_INT(27, kv3->key);
   TEST_ASSERT_EQUAL_INT(28, kv3->value);
   TEST_ASSERT_EQUAL_PTR(NULL, kvNotFound);
+
+  free(kv1);
+  free(kv2);
+  free(kv3);
 }
 
 int main(void) {
