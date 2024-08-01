@@ -54,12 +54,35 @@ void test_hashmap_insert() {
   TEST_ASSERT_EQUAL_PTR(NULL, map->buckets[7]->next->next);
 }
 
+void test_hashmap_find() {
+  int num_buckets = 10;
+  Hashmap* map = hashmap_new(num_buckets);
+
+  hashmap_insert(map, 5, 6);
+  hashmap_insert(map, 17, 18);
+  hashmap_insert(map, 27, 28);
+
+  HashmapKV* kv1 = hashmap_find(map, 5);
+  HashmapKV* kv2 = hashmap_find(map, 17);
+  HashmapKV* kv3 = hashmap_find(map, 27);
+  HashmapKV* kvNotFound = hashmap_find(map, 99);
+
+  TEST_ASSERT_EQUAL_INT(5, kv1->key);
+  TEST_ASSERT_EQUAL_INT(6, kv1->value);
+  TEST_ASSERT_EQUAL_INT(17, kv2->key);
+  TEST_ASSERT_EQUAL_INT(18, kv2->value);
+  TEST_ASSERT_EQUAL_INT(27, kv3->key);
+  TEST_ASSERT_EQUAL_INT(28, kv3->value);
+  TEST_ASSERT_EQUAL_PTR(NULL, kvNotFound);
+}
+
 int main(void) {
   UNITY_BEGIN();
 
   RUN_TEST(test_new_hashmap);
   RUN_TEST(test_hash_function);
   RUN_TEST(test_hashmap_insert);
+  RUN_TEST(test_hashmap_find);
 
   UNITY_END();
 

@@ -2,6 +2,7 @@
 
 #include <stdbool.h>
 #include <stdio.h>
+#include <time.h>
 
 #include "stdlib.h"
 
@@ -21,6 +22,15 @@
 // int hash(long value) {
 //   return value % NUM_BUCKETS;
 // }
+//
+void hashmap_print(Hashmap *map, int num_buckets) {
+  for (int i = 0; i < num_buckets; i++) {
+    if (map->buckets[i] != NULL) {
+      printf("%d: ", i);
+      sll_print_one_line(map->buckets[i]);
+    }
+  }
+}
 
 Hashmap *hashmap_new(int num_buckets) {
   Hashmap *map = malloc(num_buckets * sizeof(Node *));
@@ -46,6 +56,18 @@ Node *hashmap_insert(Hashmap *map, int key, int value) {
   }
   map->num_elements++;
   return node;
+}
+
+HashmapKV *hashmap_find(Hashmap *map, int key) {
+  int hashed_key = hashmap_hash(key, map->num_buckets);
+  Node *node = sll_find_by_key(map->buckets[hashed_key], key);
+  if (node != NULL) {
+    HashmapKV *kv = malloc(sizeof(HashmapKV));
+    kv->key = node->key;
+    kv->value = node->value;
+    return kv;
+  }
+  return NULL;
 }
 
 // void Hashmap_init(Hashmap *map) {

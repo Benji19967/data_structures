@@ -20,5 +20,5 @@ Node *sll_find_by_key(Node *head, int key);
 Node *sll_peek(Node *head);
 Node *sll_contains_key(Node *head, int key);
 void sll_push(Node *head, int key, int val);
-void sll_print(Node *curr);
 void sll_print_one_line(Node *curr);
+void sll_print(Node *curr);
