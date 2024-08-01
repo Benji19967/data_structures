@@ -9,7 +9,7 @@ void tearDown(void) {
   // clean stuff up here
 }
 
-void test_create_node() {
+void test_new_node() {
   Node *node = sll_new_node();
 
   TEST_ASSERT_EQUAL_INT(0, node->key);
@@ -17,7 +17,7 @@ void test_create_node() {
   TEST_ASSERT_EQUAL_PTR(NULL, node->next);
 }
 
-void test_create_node_stack() {
+void test_new_node_stack() {
   Node node = sll_new_node_stack();
 
   TEST_ASSERT_EQUAL_INT(0, node.key);
@@ -181,8 +181,8 @@ void test_find_by_key() {
 int main(void) {
   UNITY_BEGIN();
 
-  RUN_TEST(test_create_node);
-  RUN_TEST(test_create_node_stack);
+  RUN_TEST(test_new_node);
+  RUN_TEST(test_new_node_stack);
   RUN_TEST(test_push_node);
   RUN_TEST(test_push_node_stack);
   RUN_TEST(test_append_after_node);
