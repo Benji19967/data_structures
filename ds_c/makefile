@@ -54,6 +54,8 @@ clean:
 
 # TODO: clean this up
 
+test: test_array test_struct test_sll test_hashmap
+
 test_array:
 	gcc tests/test_array.c unity/src/unity.c -o tests/test_array.out && tests/test_array.out
 
