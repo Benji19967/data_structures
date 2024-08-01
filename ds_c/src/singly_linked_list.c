@@ -134,14 +134,30 @@ void sll_push_node(Node *head, Node *node) {
 }
 
 /*
- * Push node at the end of the linked list, which lives on the stack
+ * This causes a segmentation fault when trying to iterate the linked list after
+ * this function has returned. `node` is passed by value to the function, and
+ * hence copied. When the function returns, `node` is destroyed as part of the
+ * stack frame of the function. Also, `head` is a copy of the passed head node,
+ * hence `head->next`, where `head` is the node that is passed to the function,
+ * is never set.
  */
 void sll_push_node_stack(Node head, Node node) {
-  Node curr = head;
-  while (curr.next != NULL) {
-    curr = *curr.next;
-  }
-  curr.next = &node;
+  // This would ultimately cause a SEGMENTATION FAULT
+
+  // Node curr = head;
+  // while (curr.next != NULL) {
+  //   curr = *curr.next;
+  // }
+  // curr.next = &node;
+}
+
+/*
+ * Append after node
+ */
+void sll_append_after_node(Node *to_append_to, Node *node) {
+  Node *following = to_append_to->next;
+  to_append_to->next = node;
+  node->next = following;
 }
 
 // int main() {
