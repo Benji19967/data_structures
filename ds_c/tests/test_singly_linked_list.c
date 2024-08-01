@@ -46,6 +46,8 @@ void test_push_node() {
 // The nodes will not exist anymore once this function returns.
 // I.e. you could not return `head` and then pass it to another function to
 // print the linked list.
+// ALSO: you could run out of stack space for large lists or when running on
+// low-memory devices
 void test_push_node_stack() {
   Node head = sll_new_node_stack();
   Node new_node = sll_new_node_stack();
@@ -87,6 +89,70 @@ void test_append_after_node() {
   TEST_ASSERT_EQUAL_PTR(NULL, head->next->next->next);
 }
 
+void test_delete_head_alone() {
+  Node *head = sll_new_node();
+
+  Node *new_head = sll_delete_node(head, head);
+
+  TEST_ASSERT_EQUAL_PTR(NULL, new_head);
+}
+
+void test_delete_head() {
+  Node *head = sll_new_node();
+  Node *new_node_1 = sll_new_node();
+  new_node_1->value = 1;
+  new_node_1->key = 1;
+
+  sll_push_node(head, new_node_1);
+  Node *new_head = sll_delete_node(head, head);
+
+  TEST_ASSERT_EQUAL_PTR(new_node_1, new_head);
+}
+
+void test_delete_last_node() {
+  Node *head = sll_new_node();
+  Node *new_node_1 = sll_new_node();
+  Node *new_node_2 = sll_new_node();
+  new_node_1->value = 1;
+  new_node_1->key = 1;
+  new_node_2->value = 2;
+  new_node_2->key = 2;
+
+  sll_push_node(head, new_node_1);
+  sll_push_node(head, new_node_2);
+  Node *new_head = sll_delete_node(head, new_node_2);
+
+  TEST_ASSERT_EQUAL_INT(0, head->key);
+  TEST_ASSERT_EQUAL_INT(0, head->value);
+
+  TEST_ASSERT_EQUAL_INT(1, head->next->key);
+  TEST_ASSERT_EQUAL_INT(1, head->next->value);
+  TEST_ASSERT_EQUAL_PTR(NULL, head->next->next);
+  TEST_ASSERT_EQUAL_PTR(head, new_head);
+}
+
+void test_delete_middle_node() {
+  Node *head = sll_new_node();
+  Node *new_node_1 = sll_new_node();
+  Node *new_node_2 = sll_new_node();
+  new_node_1->value = 1;
+  new_node_1->key = 1;
+  new_node_2->value = 2;
+  new_node_2->key = 2;
+
+  sll_push_node(head, new_node_1);
+  sll_push_node(head, new_node_2);
+  Node *new_head = sll_delete_node(head, new_node_1);
+
+  TEST_ASSERT_EQUAL_INT(0, head->key);
+  TEST_ASSERT_EQUAL_INT(0, head->value);
+
+  TEST_ASSERT_EQUAL_INT(2, head->next->key);
+  TEST_ASSERT_EQUAL_INT(2, head->next->value);
+  TEST_ASSERT_EQUAL_PTR(NULL, head->next->next);
+  TEST_ASSERT_EQUAL_PTR(head, new_head);
+}
+
 int main(void) {
   UNITY_BEGIN();
 
@@ -95,6 +161,10 @@ int main(void) {
   RUN_TEST(test_push_node);
   RUN_TEST(test_push_node_stack);
   RUN_TEST(test_append_after_node);
+  RUN_TEST(test_delete_head_alone);
+  RUN_TEST(test_delete_head);
+  RUN_TEST(test_delete_last_node);
+  RUN_TEST(test_delete_middle_node);
 
   UNITY_END();
 

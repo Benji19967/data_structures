@@ -152,12 +152,40 @@ void sll_push_node_stack(Node head, Node node) {
 }
 
 /*
- * Append after node
+ * Append after node.
  */
 void sll_append_after_node(Node *to_append_to, Node *node) {
   Node *following = to_append_to->next;
   to_append_to->next = node;
   node->next = following;
+}
+
+/*
+ * Delete node.
+ *
+ * Returns pointer to (new) head, as the head could be the node that gets
+ * deleted.
+ */
+Node *sll_delete_node(Node *head, Node *node_to_delete) {
+  if (head == node_to_delete) {
+    Node *new_head = head->next;
+    free(head);
+    return new_head;
+  }
+
+  Node *prev = head;
+  Node *curr = head;
+  while (curr != node_to_delete && curr != NULL) {
+    curr = curr->next;
+    if (curr == node_to_delete) {
+      prev->next = curr->next;
+      free(node_to_delete);
+      return head;
+    }
+    prev = curr;
+  }
+  // node_to_delete not found
+  return head;
 }
 
 // int main() {
