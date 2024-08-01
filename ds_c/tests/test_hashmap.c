@@ -36,15 +36,22 @@ void test_hashmap_insert() {
   int num_buckets = 10;
   Hashmap* map = hashmap_new(num_buckets);
 
-  int key = 17;
-  int value = 18;
-  hashmap_insert(map, key, value);
+  hashmap_insert(map, 5, 6);
+  hashmap_insert(map, 17, 18);
+  hashmap_insert(map, 27, 28);
 
-  TEST_ASSERT_EQUAL_INT(1, map->num_elements);
+  TEST_ASSERT_EQUAL_INT(3, map->num_elements);
   TEST_ASSERT_EQUAL_INT(num_buckets, map->num_buckets);
+
+  TEST_ASSERT_EQUAL_INT(5, map->buckets[5]->key);
+  TEST_ASSERT_EQUAL_INT(6, map->buckets[5]->value);
+  TEST_ASSERT_EQUAL_PTR(NULL, map->buckets[5]->next);
+
   TEST_ASSERT_EQUAL_INT(17, map->buckets[7]->key);
   TEST_ASSERT_EQUAL_INT(18, map->buckets[7]->value);
-  TEST_ASSERT_EQUAL_PTR(NULL, map->buckets[7]->next);
+  TEST_ASSERT_EQUAL_INT(27, map->buckets[7]->next->key);
+  TEST_ASSERT_EQUAL_INT(28, map->buckets[7]->next->value);
+  TEST_ASSERT_EQUAL_PTR(NULL, map->buckets[7]->next->next);
 }
 
 int main(void) {
