@@ -32,6 +32,10 @@ Hashmap *hashmap_new(int num_buckets) {
   return map;
 }
 
+int hashmap_hash(int key, int num_buckets) {
+  return key % num_buckets;
+}
+
 // void Hashmap_init(Hashmap *map) {
 //   for (int i = 0; i < NUM_BUCKETS; i++) {
 //     map->buckets[i] = NULL;
