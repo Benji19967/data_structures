@@ -153,6 +153,31 @@ void test_delete_middle_node() {
   TEST_ASSERT_EQUAL_PTR(head, new_head);
 }
 
+void test_find_by_key() {
+  Node *head = sll_new_node();
+  Node *new_node_1 = sll_new_node();
+  Node *new_node_2 = sll_new_node();
+  new_node_1->value = 1;
+  new_node_1->key = 1;
+  new_node_2->value = 2;
+  new_node_2->key = 2;
+
+  sll_push_node(head, new_node_1);
+  sll_push_node(head, new_node_2);
+
+  Node *node0 = sll_find_by_key(head, 0);
+  TEST_ASSERT_EQUAL_PTR(head, node0);
+
+  Node *node1 = sll_find_by_key(head, 1);
+  TEST_ASSERT_EQUAL_PTR(new_node_1, node1);
+
+  Node *node2 = sll_find_by_key(head, 2);
+  TEST_ASSERT_EQUAL_PTR(new_node_2, node2);
+
+  Node *node3 = sll_find_by_key(head, 3);
+  TEST_ASSERT_EQUAL_PTR(NULL, node3);
+}
+
 int main(void) {
   UNITY_BEGIN();
 
@@ -165,6 +190,7 @@ int main(void) {
   RUN_TEST(test_delete_head);
   RUN_TEST(test_delete_last_node);
   RUN_TEST(test_delete_middle_node);
+  RUN_TEST(test_find_by_key);
 
   UNITY_END();
 

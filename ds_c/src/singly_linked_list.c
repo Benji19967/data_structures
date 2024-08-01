@@ -188,6 +188,20 @@ Node *sll_delete_node(Node *head, Node *node_to_delete) {
   return head;
 }
 
+/*
+ * Find node by key.
+ */
+Node *sll_find_by_key(Node *head, int key) {
+  Node *curr = head;
+  while (curr != NULL) {
+    if (curr->key == key) {
+      return curr;
+    }
+    curr = curr->next;
+  }
+  return NULL;
+}
+
 // int main() {
 //   Node *head = NULL;
 //   Node *prev = (Node *)malloc(sizeof(Node));
