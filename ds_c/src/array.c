@@ -21,7 +21,7 @@ void array_print_2d(int** arr, int m, int n) {
 int** array_create_2d(int m, int n) {
   int** arr = malloc(m * sizeof(int*));
   for (int i = 0; i < m; i++) {
-    arr[i] = malloc(n);
+    arr[i] = malloc(n * sizeof(int));
   }
 
   return arr;
