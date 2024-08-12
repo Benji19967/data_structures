@@ -3,9 +3,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_array(int arr[], int arr_length) {
+void array_print(int arr[], int arr_length) {
   for (int i = 0; i < arr_length; i++) {
     printf("%d: %d\n", i, arr[i]);
+  }
+}
+
+void array_print_2d(int** arr, int m, int n) {
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      printf("%d ", arr[i][j]);
+    }
+    printf("\n");
   }
 }
 
