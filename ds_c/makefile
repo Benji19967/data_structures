@@ -57,7 +57,7 @@ clean:
 test: test_array test_struct test_sll test_hashmap
 
 test_array:
-	gcc tests/test_array.c unity/src/unity.c -o tests/test_array.out && tests/test_array.out
+	gcc tests/test_array.c src/array.c unity/src/unity.c -o tests/test_array.out && tests/test_array.out
 
 test_struct:
 	gcc tests/test_struct.c unity/src/unity.c -o tests/test_struct.out && tests/test_struct.out

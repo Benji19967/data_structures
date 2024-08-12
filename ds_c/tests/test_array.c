@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include "../src/array.h"
 #include "../unity/src/unity.h"
 
 void setUp(void) {
@@ -83,6 +84,17 @@ void test_create_2d_array_heap() {
   TEST_ASSERT_EQUAL_INT(6, arr[1][2]);
 }
 
+void test_create_2d_array_from_function() {
+  int **arr = create_2d_array(2, 3);
+
+  TEST_ASSERT_EQUAL_INT(1, arr[0][0]);
+  TEST_ASSERT_EQUAL_INT(2, arr[0][1]);
+  TEST_ASSERT_EQUAL_INT(3, arr[0][2]);
+  TEST_ASSERT_EQUAL_INT(4, arr[1][0]);
+  TEST_ASSERT_EQUAL_INT(5, arr[1][1]);
+  TEST_ASSERT_EQUAL_INT(6, arr[1][2]);
+}
+
 int main(void) {
   UNITY_BEGIN();
 
@@ -94,6 +106,7 @@ int main(void) {
   RUN_TEST(test_create_array_of_pointers_null);
   RUN_TEST(test_create_2d_array_stack);
   RUN_TEST(test_create_2d_array_heap);
+  RUN_TEST(test_create_2d_array_from_function);
 
   UNITY_END();
 
