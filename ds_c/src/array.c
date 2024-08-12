@@ -9,20 +9,18 @@ void print_array(int arr[], int arr_length) {
   }
 }
 
-int** create_2d_array(int m, int n) {
-  int M = 2;
-  int N = 3;
-  int** arr = malloc(M * sizeof(int*));
-  for (int i = 0; i < M; i++) {
-    arr[i] = malloc(N);
+int** array_create_2d(int m, int n) {
+  int** arr = malloc(m * sizeof(int*));
+  for (int i = 0; i < m; i++) {
+    arr[i] = malloc(n);
   }
 
-  arr[0][0] = 1;
-  arr[0][1] = 2;
-  arr[0][2] = 3;
-  arr[1][0] = 4;
-  arr[1][1] = 5;
-  arr[1][2] = 6;
-
   return arr;
+}
+
+void array_delete_2d(int** arr, int m, int n) {
+  for (int i = 0; i < m; i++) {
+    free(arr[i]);
+  }
+  free(arr);
 }
