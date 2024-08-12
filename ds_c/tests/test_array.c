@@ -88,22 +88,26 @@ void test_create_2d_array_heap() {
 
 void test_create_2d_array_from_function() {
   int M = 2;
-  int N = 3;
+  int N = 5;
   int **arr = array_create_2d(M, N);
 
   arr[0][0] = 1;
   arr[0][1] = 2;
   arr[0][2] = 3;
-  arr[1][0] = 4;
-  arr[1][1] = 5;
-  arr[1][2] = 6;
+  arr[0][3] = 4;
+  arr[0][4] = 5;
+  arr[1][0] = 6;
+  arr[1][1] = 7;
+  arr[1][2] = 8;
 
   TEST_ASSERT_EQUAL_INT(1, arr[0][0]);
   TEST_ASSERT_EQUAL_INT(2, arr[0][1]);
   TEST_ASSERT_EQUAL_INT(3, arr[0][2]);
-  TEST_ASSERT_EQUAL_INT(4, arr[1][0]);
-  TEST_ASSERT_EQUAL_INT(5, arr[1][1]);
-  TEST_ASSERT_EQUAL_INT(6, arr[1][2]);
+  TEST_ASSERT_EQUAL_INT(4, arr[0][3]);
+  TEST_ASSERT_EQUAL_INT(5, arr[0][4]);
+  TEST_ASSERT_EQUAL_INT(6, arr[1][0]);
+  TEST_ASSERT_EQUAL_INT(7, arr[1][1]);
+  TEST_ASSERT_EQUAL_INT(8, arr[1][2]);
 
   array_delete_2d(arr, M, N);
 }
