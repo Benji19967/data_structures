@@ -112,6 +112,35 @@ void test_create_2d_array_from_function() {
   array_delete_2d(arr, M, N);
 }
 
+void test_copy_2d_array() {
+  int M = 2;
+  int N = 5;
+  int **src = array_create_2d(M, N);
+
+  src[0][0] = 1;
+  src[0][1] = 2;
+  src[0][2] = 3;
+  src[0][3] = 4;
+  src[0][4] = 5;
+  src[1][0] = 6;
+  src[1][1] = 7;
+  src[1][2] = 8;
+
+  int **dst = array_copy_2d(src, M, N);
+
+  TEST_ASSERT_EQUAL_INT(1, dst[0][0]);
+  TEST_ASSERT_EQUAL_INT(2, dst[0][1]);
+  TEST_ASSERT_EQUAL_INT(3, dst[0][2]);
+  TEST_ASSERT_EQUAL_INT(4, dst[0][3]);
+  TEST_ASSERT_EQUAL_INT(5, dst[0][4]);
+  TEST_ASSERT_EQUAL_INT(6, dst[1][0]);
+  TEST_ASSERT_EQUAL_INT(7, dst[1][1]);
+  TEST_ASSERT_EQUAL_INT(8, dst[1][2]);
+
+  array_delete_2d(src, M, N);
+  array_delete_2d(dst, M, N);
+}
+
 int main(void) {
   UNITY_BEGIN();
 
@@ -124,6 +153,7 @@ int main(void) {
   RUN_TEST(test_create_2d_array_stack);
   RUN_TEST(test_create_2d_array_heap);
   RUN_TEST(test_create_2d_array_from_function);
+  RUN_TEST(test_copy_2d_array);
 
   UNITY_END();
 
