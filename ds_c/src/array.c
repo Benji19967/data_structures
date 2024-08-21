@@ -52,3 +52,14 @@ void array_delete_2d(int** arr, int m, int n) {
   }
   free(arr);
 }
+
+bool array_is_equal_2d(int** arr1, int** arr2, int m, int n) {
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      if (arr1[i][j] != arr2[i][j]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}

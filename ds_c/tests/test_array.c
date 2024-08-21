@@ -155,6 +155,31 @@ void test_init_array_2d() {
   }
 }
 
+void test_array_equal_2d() {
+  int M = 2;
+  int N = 5;
+
+  int **arr1 = array_create_2d(M, N);
+
+  arr1[0][0] = 1;
+  arr1[0][1] = 2;
+  arr1[0][2] = 3;
+  arr1[0][3] = 4;
+  arr1[0][4] = 5;
+  arr1[1][0] = 6;
+  arr1[1][1] = 7;
+  arr1[1][2] = 8;
+  arr1[1][3] = 9;
+  arr1[1][4] = 10;
+
+  int **arr2 = array_copy_2d(arr1, M, N);
+
+  TEST_ASSERT_EQUAL_INT(1, array_is_equal_2d(arr1, arr2, M, N));
+
+  arr2[0][4] = 21;
+  TEST_ASSERT_EQUAL_INT(0, array_is_equal_2d(arr1, arr2, M, N));
+}
+
 int main(void) {
   UNITY_BEGIN();
 
@@ -169,6 +194,7 @@ int main(void) {
   RUN_TEST(test_create_2d_array_from_function);
   RUN_TEST(test_copy_2d_array);
   RUN_TEST(test_init_array_2d);
+  RUN_TEST(test_array_equal_2d);
 
   UNITY_END();
 
