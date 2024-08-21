@@ -141,6 +141,20 @@ void test_copy_2d_array() {
   array_delete_2d(dst, M, N);
 }
 
+void test_init_array_2d() {
+  int M = 2;
+  int N = 5;
+  int arr[M][N];
+
+  array_init_2d((int *)arr, M, N, 0);
+
+  for (int i = 0; i < M; i++) {
+    for (int j = 0; j < N; j++) {
+      TEST_ASSERT_EQUAL_INT(0, arr[i][j]);
+    }
+  }
+}
+
 int main(void) {
   UNITY_BEGIN();
 
@@ -154,6 +168,7 @@ int main(void) {
   RUN_TEST(test_create_2d_array_heap);
   RUN_TEST(test_create_2d_array_from_function);
   RUN_TEST(test_copy_2d_array);
+  RUN_TEST(test_init_array_2d);
 
   UNITY_END();
 

@@ -28,6 +28,14 @@ int** array_create_2d(int m, int n) {
   return arr;
 }
 
+void array_init_2d(int* arr, int m, int n, int initial_value) {
+  for (int i = 0; i < m; i++) {
+    for (int j = 0; j < n; j++) {
+      *((arr + i * n) + j) = initial_value;
+    }
+  }
+}
+
 int** array_copy_2d(int** src, int m, int n) {
   int** dst = malloc(m * sizeof(int*));
   for (int i = 0; i < m; i++) {
