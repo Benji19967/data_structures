@@ -46,6 +46,12 @@ int** array_copy_2d(int** src, int m, int n) {
   return dst;
 }
 
+void array_copy_into_dst_2d(int** src, int** dst, int m, int n) {
+  for (int i = 0; i < m; i++) {
+    memcpy(dst[i], src[i], n * sizeof(int));
+  }
+}
+
 void array_delete_2d(int** arr, int m, int n) {
   for (int i = 0; i < m; i++) {
     free(arr[i]);
