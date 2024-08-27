@@ -10,6 +10,14 @@
  *
  */
 
+char* string_n_times_char(const char* c, const int n) {
+  char* s = malloc(n * sizeof(char));
+  for (int i = 0; i < n; i++) {
+    strncat(s, c, 1);
+  }
+  return s;
+}
+
 // int main() {
 //   /*
 //    * Section 1
