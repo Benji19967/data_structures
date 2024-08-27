@@ -1,4 +1,4 @@
-#include "../src/string.h"
+#include "../src/str.h"
 #include "../unity/src/unity.h"
 
 void setUp(void) {
